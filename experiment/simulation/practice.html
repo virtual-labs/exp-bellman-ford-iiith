@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual labs</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="columns is-centered">
+		<div class="column">
+			<div class="v-collapsible-instruction-container v-instruction-container">
+				<div class="v-collapsible is-size-5" id="task-description">
+					Instructions
+				</div>
+				<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+					<ul style="list-style: disc;">
+						<li>Click on components on the left side to add them to the circuit board.</li>
+						<li>For this experiment you need <b>5 inverters</b></li>
+						<li>Drag and drop components to move them around, connect them using wires by dragging your
+							cursor from one endpoint to another.</li>
+						<li>Double click on a wire to delete it.</li>
+						<li>Double click or long press on input element to change it's value</li>
+						<li>Select the appropriate tab and click on validate after completion of circuit</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="columns is-centered is-flex is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+		<div class="column is-7-desktop is-12-tablet is-12-mobile center-content">
+			<div class="is-flex-wrap-wrap center-content simulation-container" id="diagram">
+			</div>
+		</div>
+
+		<div class="column is-5-desktop is-12-tablet is-12-mobile center-content">
+			<div class="v-datalist-container toolbar-item-list">
+				<div class="v-datalist-title">
+					Observation
+				</div>
+				<div class="v-table-wrap">
+					<div class="v-datalist-title">
+						Previous Values
+					</div>
+					<table class="table is-bordered is-fullwidth" style="margin-top: 5%">
+						<thead id="table-head">
+							<tr>
+								<th>Iteration</th>
+								<th>0</th>
+								<th>1</th>
+								<th>2</th>
+								<th>3</th>
+								<th>4</th>
+								<th>5</th>
+							</tr>
+						</thead>
+						<tbody id="table-body">
+						</tbody>
+					</table>
+				</div>
+				<div class="v-datalist-title" style="margin-top: 5%;">
+					Fill Values For Iteration - 1
+				</div>
+				<form class="Table" style="margin-top: 5%">
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 0</label>
+						<input id="node0" class="Cell" type="number">
+					</div>
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 1</label>
+						<input id="node1" class="Cell" type="number">
+					</div>
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 2</label>
+						<input id="node2" class="Cell" type="number">
+					</div>
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 3</label>
+						<input id="node3" class="Cell" type="number">
+					</div>
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 4</label>
+						<input id="node4" class="Cell" type="number">
+					</div>
+					<div class="Row">
+						<label class="Cell" for="Name">Src - Node 5</label>
+						<input id="node5" class="Cell" type="number">
+					</div>
+				</form>
+				<div class="columns is-centered" style="margin-top: 5%;">
+					<div class="column" style="margin:auto;text-align:center">
+						<button class="v-button" onclick="inverterValidate()">Next Iteration</button>
+						<button class="v-button" onclick="refreshWorkingArea()">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="module" src="js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.22.1/cytoscape.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+</body>
+
+</html>

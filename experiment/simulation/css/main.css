@@ -1,1 +1,136 @@
-/* You CSS goes in here */
+.toolbar-item-list {
+  padding: 2% 5%;
+  text-align: center;
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: start;
+  justify-content: center;
+  padding: 10px;
+}
+
+.toolbar-component {
+  width: 100px;
+  height: 45px;
+  border-radius: 0.75em;
+  border: 0.2rem solid black;
+  margin: 0.5rem 0.5rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+  padding-top:  2%;
+  color: "black";
+  background-color: rgb(202, 252, 202);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 600px) {
+  .toolbar-component {
+    width: 60px;
+    height: 30px;
+    font-size: 0.75rem;
+    padding-top: 1%;
+    background-size: 100%;
+  }
+}
+
+.text-danger {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text-success {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+.demo-transistor {
+  fill: none;
+  stroke: rgb(0, 0, 0);
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  pointer-events: stroke;
+}
+
+.v-instruction-container {
+  margin-top: 30px;
+  border: .2rem solid #97d23d;
+  justify-content: flex-start;
+}
+.Table
+{
+    display: table;
+    width: 75%;
+    margin: 0 auto;
+    background-color: orange;
+    border-collapse: separate;
+    border-spacing: 0.5em;
+}
+
+.Row
+{
+    display: table-row;
+    text-align: center;
+    background-color: lime;
+}
+
+.Cell
+{
+    display: table-cell;
+}
+
+.odinMainContainer
+{
+  height: 85vh;
+  width: 100%;
+  border: 0.2rem solid #97d23d;
+  border-radius: 1rem;
+  background-color: #f1f1f1;
+  display: -webkit-flex;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-self:auto;
+  align-items:flex-start;
+  align-content:flex-start;
+}
+
+
+
+.odinLeftSidebarContainer
+{
+  width: 100%;
+  height:35%;
+}
+
+.odinMainContentContainer
+{
+  width: 100%;
+  height:65%;
+}
+
+.text-demo{
+  font-size: 1.27rem;
+  fill: black;
+  font-weight: bold;
+}
+
+.array-demo
+{
+  stroke-width: 3px;
+  fill: #29e;
+  stroke: black;
+}
+
+.array-text{
+  font-size: 1.5rem;
+  fill: black;
+  font-weight: bold;
+}
