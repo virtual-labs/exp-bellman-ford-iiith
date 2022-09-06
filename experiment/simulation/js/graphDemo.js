@@ -9,7 +9,7 @@ const EMPTY = "";
 let iter = 0;
 let edge = 0;
 let decide = true;
-let numNodes = 6;
+let numNodes = 7;
 
 let states = {};
 
@@ -75,11 +75,11 @@ function run(key) {
     let dest = parseInt(edgeId.split(":")[1]);
     if (states[key].change) {
         observ.innerHTML = "Current Iteration: " + iter.toString() + " Current Edge: " + edge.toString();
-        observ.innerHTML += "The distance to node " + dest.toString() + " is updated to " + states[key]["distance"][dest].toString();
+        observ.innerHTML += "<br> The distance to node " + dest.toString() + " is updated to " + states[key]["distance"][dest].toString();
         changeColor("red", dest, edgeId);
     } else {
         observ.innerHTML = "Current Iteration: " + iter.toString() + " Current Edge: " + edge.toString();
-        observ.innerHTML += "The distance to node " + dest.toString() + " is not updated";
+        observ.innerHTML += "<br> The distance to node " + dest.toString() + " is not updated";
         changeColor("yellow", dest, edgeId);
     }
 }

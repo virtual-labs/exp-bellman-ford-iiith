@@ -9,7 +9,8 @@ export let cy = cytoscape({
         { data: { id: '2' } },
         { data: { id: '3' } },
         { data: { id: '4' } },
-        { data: { id: '5' } }],
+        { data: { id: '5' } },
+        { data: { id: '6' } }],
     style: [
         {
             selector: 'node',

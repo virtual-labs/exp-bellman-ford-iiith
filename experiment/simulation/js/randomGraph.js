@@ -2,7 +2,7 @@
 function getRandomArbitrary(min, max) {
     return parseInt(Math.random() * (max - min) + min);
 }
-let states ={};
+let states = {};
 
 export let graph = [];
 export let selectedEdge = [];
@@ -49,19 +49,20 @@ function NegCycleBellmanFord(numEdges, numNodes) {
 }
 
 export function makeGraph() {
-    let numNodes = 6;
-    numEdges = getRandomArbitrary(numNodes - 1, numNodes+3);
-    let remainingEdges = numEdges;
+    let numNodes = 7;
+    // fixing 5 edges for better testcase
+    graph.push({ source: 0, target: 1, weight: getRandomArbitrary(0, 10) });
+    graph.push({ source: 0, target: 2, weight: getRandomArbitrary(0, 10) });
+    graph.push({ source: 0, target: 3, weight: getRandomArbitrary(0, 10) });
+    graph.push({ source: 3, target: 2, weight: getRandomArbitrary(-10, -5) });
+    graph.push({ source: 2, target: 1, weight: getRandomArbitrary(-5, 0) });
+    let remainingEdges = getRandomArbitrary(4,6);
+    numEdges = remainingEdges + 5;
     while (remainingEdges > 0) {
         let source;
         let target;
-        if(remainingEdges <= 2) {
-            source = 0;
-            target = Math.floor(Math.random() * numNodes);
-        }else{
-            source = Math.floor(Math.random() * (numNodes-1))+1;
-            target = Math.floor(Math.random() * numNodes);
-        }
+        source = Math.floor(Math.random() * (numNodes - 1)) + 1;
+        target = Math.floor(Math.random() * numNodes);
         if (source != target) {
             let isPresent = false;
             for (let i = 0; i < graph.length; i++) {
@@ -77,6 +78,7 @@ export function makeGraph() {
             }
         }
     }
+    graph.reverse();
     NegCycleBellmanFord(numEdges, numNodes);
     console.log(graph);
 }
