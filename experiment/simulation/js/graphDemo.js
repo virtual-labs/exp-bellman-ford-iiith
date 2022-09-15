@@ -1,8 +1,7 @@
 'use strict';
-import { numEdges, graph } from "./randomGraph.js";
+import { numEdges, graph,states } from "./randomGraph.js";
 import { cy } from "./displayGraph.js";
 import { refreshWorkingArea, removeEdges } from "./demo.js";
-
 const observ = document.getElementById("observations");
 const EMPTY = "";
 
@@ -11,9 +10,8 @@ let edge = 0;
 let decide = true;
 let numNodes = 7;
 
-let states = {};
-
 export function fillStates() {
+    let numNodes = 7;
     let d = Array(numNodes).fill(1e7);
     let p = Array(numNodes).fill(-1);
     d[0] = 0;
@@ -23,13 +21,16 @@ export function fillStates() {
             const edgeId = graph[j].source.toString() + ":" + graph[j].target.toString();
             const key = i.toString() + "-" + edgeId;
             let tempState = {};
+            let selectedEdges = [];
             if (d[graph[j].source] + graph[j].weight < d[graph[j].target] && d[graph[j].source] + graph[j].weight < 1e6) {
                 d[graph[j].target] = d[graph[j].source] + graph[j].weight;
                 p[graph[j].target] = graph[j].source;
                 tempState["change"] = true;
+                selectedEdges.push(edgeId);
             } else {
                 tempState["change"] = false;
             }
+            tempState["selectedEdges"] = selectedEdges;
             tempState["distance"] = d.slice();
             tempState["parent"] = p.slice();
             states[key] = tempState;
@@ -67,8 +68,16 @@ function changeArray(distance, parent) {
     }
 }
 
+function showCurrentIteration() {
+    for(let iter = 0 ;iter <6;iter++){
+        document.getElementById("iteration" + iter.toString()).classList.remove("is-active")
+    }
+    document.getElementById("iteration" + iter.toString()).classList.add("is-active")
+}
+
 function run(key) {
     // check if color of current edge is red
+    showCurrentIteration();
     const edgeId = key.split("-")[1];
     restoreColor("black", "lightgreen","rgb(202, 252, 202)");
     changeArray(states[key]["distance"], states[key]["parent"]);
@@ -85,6 +94,9 @@ function run(key) {
 }
 
 export function restartCircuit() {
+    for(let iter = 0 ;iter <6;iter++){
+        document.getElementById("iteration" + iter.toString()).classList.remove("is-active")
+    }
     removeEdges();
     edge = 0;
     iter = 0;

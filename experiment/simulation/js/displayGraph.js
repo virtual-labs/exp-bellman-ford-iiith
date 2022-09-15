@@ -33,7 +33,8 @@ export let cy = cytoscape({
         }
     ]
 });
-export function addEdges() {
+export function addEdges(graphNum) {
+    cy.nodes('[id=\'' + '0' + '\']').style('background-color','violet',);
     let visited = [];
     for (let i = 0; i < 7; i++) {
         visited[i] = [];
@@ -46,6 +47,9 @@ export function addEdges() {
         let dest = graph[node].target.toString();
         let weight = graph[node].weight.toString();
         let edgeId = src + ":" +dest;
+        if(graphNum !== null){
+            edgeId = graphNum.toString() + "-" + edgeId;
+        }
         cy.add([
             { group: 'edges', data: { id: edgeId, source: src, target: dest, label: weight } }
         ]);

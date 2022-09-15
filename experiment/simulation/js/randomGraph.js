@@ -2,7 +2,7 @@
 function getRandomArbitrary(min, max) {
     return parseInt(Math.random() * (max - min) + min);
 }
-let states = {};
+export let states = {};
 
 export let graph = [];
 export let selectedEdge = [];
@@ -111,5 +111,6 @@ export function printGraph() {
 }
 
 export function clearGraph() {
+    states = {};
     graph = [];
 }

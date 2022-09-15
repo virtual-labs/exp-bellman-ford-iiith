@@ -20,19 +20,18 @@
                 </div>
                 <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
                     <ul style="list-style: disc;">
-                        <li>Click on components on the left side to add them to the circuit board.</li>
-                        <li>For this experiment you need <b>5 inverters</b></li>
-                        <li>Drag and drop components to move them around, connect them using wires by dragging your
-                            cursor from one endpoint to another.</li>
-                        <li>Double click on a wire to delete it.</li>
-                        <li>Double click or long press on input element to change it's value</li>
-                        <li>Select the appropriate tab and click on validate after completion of circuit</li>
+                        <li>Node 0 is chosen as source.</li>
+                        <li>Click on the <b>Next</b> button to move to the next iteration.</li>
+                        <li>Click on the <b>Previous</b> button to move to the previous iteration.</li>
+                        <li>Click on the <b>Reset</b> button to generate a new graph.</li>
+                        <li>Order of edges on left window show the order in which the edges are selected.</li>
+                        <li>Yellow color represent the distance won't be updated whereas red represent theat distance will be updated.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="columns is-centered is-flex is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+    <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
         <div class="column is-2-desktop is-12-tablet is-12-mobile">
             <div class="v-datalist-container" style="height:100%">
                 <div class="v-datalist-title">Order Of Edges</div>
@@ -40,13 +39,49 @@
             </div>
         </div>
         <div class="column is-6-desktop is-12-tablet is-12-mobile center-content">
-            <div class='odinMainContainer'>
+            <div class='practiceMainContainer'>
+                <div class="practiceTopContainer">
+                    <div class="column centered-div">
+                        <div class="v-tabs tabs-size">
+                            <ul>
+                                <li id="iteration0">
+                                    <a class="tabs-info">
+                                        Iter 0
+                                    </a>
+                                </li>
+                                <li id="iteration1">
+                                    <a class="tabs-info">
+                                        Iter 1
+                                    </a>
+                                </li>
+                                <li id="iteration2">
+                                    <a class="tabs-info">
+                                        Iter 2
+                                    </a>
+                                </li>
+                                <li id="iteration3">
+                                    <a class="tabs-info">
+                                        Iter 3
+                                    </a>
+                                </li>
+                                <li id="iteration4">
+                                    <a class="tabs-info">
+                                        Iter 4
+                                    </a>
+                                </li>
+                                <li id="iteration5">
+                                    <a class="tabs-info">
+                                        Iter 5
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <!-- Left Sidebar Area -->
-                <div class='odinLeftSidebarContainer'>
+                <div class='practiceLeftSidebarContainer'>
                     <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="120%"
                         viewBox="0 0 420 325 ">
-                        <text x="-120" y="30" class="text-demo">Array representing current distance and parent
-                            from source to other nodes.</text>
                         <text x="-50" y="95" class="text-demo">Node</text>
                         <text x="-50" y="155" class="text-demo">Distance</text>
                         <text x="-50" y="215" class="text-demo">Parent</text>
@@ -92,28 +127,30 @@
                         <text id="parent4" x="315" y="215" class="array-text">-1</text>
                         <text id="parent5" x="375" y="215" class="array-text">-1</text>
                         <text id="parent6" x="435" y="215" class="array-text">-1</text>
+						<text x="500" y="215" class="array-text tooltip" onclick="showInfo()" >&#9432;</text>
                     </svg>
+					<span class="tooltiptext">Array Representing distance and parent of nodes</span>
                 </div>
 
                 <!-- Main Content Area -->
-                <div class='odinMainContentContainer' id="diagram">
+                <div class='practiceMainContentContainer' id="diagram">
                 </div>
+                <div class="practiceBottomContainer">
+					<div class="columns centered-div">
+                        <button class="v-button button-margin" id="play-or-pause" onclick="previousSimulation()">Prev</button>
+                        <button class="v-button button-margin" id="play-or-pause" onclick="simulationStatus()">Next</button>
+                        <button class="v-button button-margin" id="restart" onclick="restartCircuit()">Reset</button>
+					</div>
+				</div>
             </div>
         </div>
         <div class="column is-3-desktop is-12-tablet is-12-mobile center-content">
             <div class="v-datalist-container toolbar-item-list">
-                <div class="columns is-centered">
-                    <div class="column">
-                        <button class="v-button" id="play-or-pause" onclick="previousSimulation()">Prev</button>
-                        <button class="v-button" id="play-or-pause" onclick="simulationStatus()">Next</button>
-                        <button class="v-button" id="restart" onclick="restartCircuit()">Reset</button>
-                    </div>
-                </div>
                 <div class="v-datalist-title">
                     Observation
                 </div>
                 <div class="v-datalist-row">
-                    <div id="observations"></div>
+                    <div id="observations" style="font-size: 20px; font-weight:bold;"></div>
                 </div>
             </div>
         </div>

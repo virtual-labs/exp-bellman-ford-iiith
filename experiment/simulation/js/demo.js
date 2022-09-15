@@ -7,6 +7,7 @@ import {hideEdge} from "./showEdges.js";
 window.simulationStatus = simulationStatus;
 window.previousSimulation = previousSimulation;
 window.restartCircuit = restartCircuit;
+window.showInfo = showInfo;
 export const connectionMap = new Map();
 export let componentsList = [];
 const EMPTY="";
@@ -18,6 +19,16 @@ window.refreshWorkingArea = refreshWorkingArea;
 
 export function refreshTable(){
     document.getElementById("table-body").innerHTML = EMPTY;
+}
+
+function showInfo(){
+    let info = document.getElementsByClassName("tooltiptext")[0];
+    if(info.style.visibility === "visible"){
+        info.style.visibility = "hidden";
+    }
+    else{
+        info.style.visibility = "visible";
+    }
 }
 
 export function removeEdges(){
@@ -34,7 +45,7 @@ export function removeEdges(){
 
 export function refreshWorkingArea() {
     makeGraph();
-    addEdges();
+    addEdges(null);
     fillStates();
 }
 refreshWorkingArea();
