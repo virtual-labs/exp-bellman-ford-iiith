@@ -2,35 +2,73 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Q1. Bellman ford is better as compared to dijkstra's algorithm because: ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "It has a lower time complexity",
+        "b": "It can handle negative edges",
+        "c": "It can handle negative cycles",
+        "d": "It can handle negative edges and negative cycles"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "b": "Bellamn ford has more time complexity than dijkstra's algorithm but it can handle negative edges, the algorithm can't handle negative cycles"
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Q2. The best and worst case time complexity of bellman ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "O(n) and O(n^2)",
+        "b": "O(n^2) and O(n^3)",
+        "c": "O(n^3) and O(n^2)",
+        "d": "O(E) and O(n^3)"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "d": "The best case time complexity of bellman ford is O(E) and the worst case time complexity is O(n^3). In the best case we would run the algorithm once for all the edges thus it will be O(E). In the worst case we will run the algorithm n times for all the edges and the maximum number of edges that can be present in a graph is n(n-1)/2. Thus the worst case time complexity is O(n^3)"
+      },
+      "correctAnswer": "d",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "Q3. Bellman ford is type of which algorithm?",
+      "answers": {
+        "a": "Greedy algorithm",
+        "b": "Dynamic programming algorithm",
+        "c": "Backtracking algorithm",
+        "d": "Divide and conquer algorithm"
+      },
+      "explanations": {
+        "b": "Bellman ford is a dynamic programming algorithm, because we are using the previous results to calculate the current result"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Q4. In the given graph :<img src=\"./images/pretestq1.png \">",
+      "answers": {
+        "a": "There is negative cycle 4->0->2->4",
+        "b": "There is negative cycle 4->0->5->1->4",
+        "c": "There is negative cycle 4->5->1->4",
+        "d": "There are no negative cycles"
+      },
+      "explanations": {
+        "a": "The sum of edges 4->0 , 0->2 and 2->4 is 13 which is greater than 0. Thus it is not a negative cycle",
+        "b": "The sum of edges 4->0 , 0->5 , 5->1 and 1->4 is -1 which is less than 0. Thus it is a negative cycle",
+        "c": "The sum of edges 4->5 , 5->1 and 1->4 is 8 which is greater than 0. Thus it is not a negative cycle"
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Q5. The space complexity of dijkstra's algorithm and bellman ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
+      "answers": {
+        "a": "O(n) and O(E + n)",
+        "b": "O(n) and O((E+n)logn)",
+        "c": "O(E + n) and O(n)",
+        "d": "O((E+n)logn) and O(n)"
+      },
+      "explanations": {
+        "c": "The space complexity of dijkstra's algorithm is O(E + n) because we are using a priority queue to store the edges and an array to store the distances. The space complexity of bellman ford algorithm is O(n) because we are using an array to store the distances and the array"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
