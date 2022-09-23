@@ -27,7 +27,7 @@
         "d": "The best case time complexity of bellman ford is O(E) and the worst case time complexity is O(n^3). In the best case we would run the algorithm once for all the edges thus it will be O(E). In the worst case we will run the algorithm n times for all the edges and the maximum number of edges that can be present in a graph is n(n-1)/2. Thus the worst case time complexity is O(n^3)"
       },
       "correctAnswer": "d",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "Q3. Bellman ford is type of which algorithm?",
