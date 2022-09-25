@@ -59,8 +59,8 @@
             "unit-type": "task",
             "label": "Further Readings/References",
             "content-type": "text",
-            "source": "simulation/references.md",
-            "target": "simulation/references.html"
+            "source": "references.md",
+            "target": "references.html"
           }
     ]
 }
