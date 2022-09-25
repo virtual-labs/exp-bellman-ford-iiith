@@ -54,6 +54,13 @@
             "content-type": "assesment",
             "source": "posttest.json",
             "target": "posttest.html"
-        }
+        },
+        {
+            "unit-type": "task",
+            "label": "Further Readings/References",
+            "content-type": "text",
+            "source": "simulation/references.md",
+            "target": "simulation/references.html"
+          }
     ]
 }
