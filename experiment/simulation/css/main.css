@@ -35,7 +35,8 @@
 }
 
 .tabs-size{
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .tooltiptext {
@@ -60,7 +61,7 @@
     background-size: 100%;
   }
   .tabs-size{
-    font-size: 12px;
+    font-size: 11px;
   }
   .tooltiptext{
     width: 60px;
@@ -109,12 +110,12 @@
 
 .practiceTopContainer {
   width: 100%;
-  height: 5%;
+  height: 4%;
 }
 
 .practiceLeftSidebarContainer {
   width: 100%;
-  height: 25%;
+  height: 26%;
 }
 
 .practiceMainContentContainer {
@@ -128,7 +129,7 @@
 }
 
 .text-demo {
-  font-size: 1.27rem;
+  font-size: 1.5rem;
   fill: black;
   font-weight: bold;
 }
@@ -179,4 +180,10 @@
 }
 .tabs-info{
   cursor: not-allowed;
+}
+
+.instruction-list{
+  text-align: left; 
+  padding-left: 10%; 
+  padding-right: 10%;
 }

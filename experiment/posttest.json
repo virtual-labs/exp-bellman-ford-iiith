@@ -2,21 +2,21 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Q1. Bellman ford algorithm is used for determining",
+      "question": "Q1. What will be the average time complexity of the Bellman-ford algorithm if the time taken to realx an edge is O(log V)?",
       "answers": {
-        "a": "Shortest path from all vertices to all other vertices",
-        "b": "Shortest path from a single source to all other vertices",
-        "c": "Shortest path from a single source to a single destination",
-        "d": "Shortest path from all vertices to a single destination"
+        "a": "O(V log V)",
+        "b": "O(V log E)",
+        "c": "O(V log V + E log V)",
+        "d": "O(VE log V)"
       },
       "explanations": {
-        "b": "Bellman ford algorithm is used for determining the shortest path from a single source to all other vertices."
+        "d": "The time complexity of Bellman-Ford algorithm is O(VE). Now the time taken to relax an edge is O(log V). So, the time complexity of the above described Bellman-Ford algorithm will be O(VE log V)."
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
     },
     {
-      "question": "Q2. We can use bellman ford algorithm to detect negative weight cycles in a graph.",
+      "question": "Q2. We can use Bellman-Ford algorithm to detect negative weight cycles in a graph.",
       "answers": {
         "a": "True",
         "b": "False"
@@ -25,7 +25,7 @@
         "a": "Instead of running the algorithm for |V|-1 times, we can run it for |V| times. If the shortest distance of any vertex changes in the |V|th iteration, then it means that there is a negative weight cycle in the graph."
       },
       "correctAnswer": "a",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "Q3. The shortest distance between node 0 and 3 is :<img src=\"./images/posttestq1.png \">",

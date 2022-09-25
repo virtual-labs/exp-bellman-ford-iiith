@@ -1,5 +1,4 @@
 import { graph } from "./randomGraph.js";
-import { selectedEdge } from "./randomGraph.js";
 import { showEdge } from "./showEdges.js";
 export let cy = cytoscape({
     container: document.getElementById('diagram'),
@@ -35,13 +34,6 @@ export let cy = cytoscape({
 });
 export function addEdges(graphNum) {
     cy.nodes('[id=\'' + '0' + '\']').style('background-color','violet',);
-    let visited = [];
-    for (let i = 0; i < 7; i++) {
-        visited[i] = [];
-        for (let j = 0; j < 7; j++) {
-            visited[i][j] = false;
-        }
-    }
     for (let node in graph) {
         let src = graph[node].source.toString();
         let dest = graph[node].target.toString();

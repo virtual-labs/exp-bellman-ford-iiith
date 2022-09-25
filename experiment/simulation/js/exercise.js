@@ -1,8 +1,7 @@
 'use strict';
-import { makeGraph, states, numEdges, graph } from "./randomGraph.js";
-import { addEdges, cy } from "./displayGraph.js";
-import { removeEdges } from "./demo.js";
-
+import { states, graph,numNodes } from "./randomGraph.js";
+import { cy } from "./displayGraph.js";
+import { refreshComponents, changeColorGraph, colorPreviousEdges,areEqual } from "./helper.js";
 const observ = document.getElementById("observations");
 window.refreshWorkingArea = refreshWorkingArea;
 window.openIteration = openIteration;
@@ -10,81 +9,48 @@ window.submitIteration = submitIteration;
 let selectedIteration = 0;
 let iterEdgeList = {};
 
-function fillStates() {
-    let numNodes = 7;
+function createDistanceAndParentTable() {
     let d = Array(numNodes).fill(1e7);
     let p = Array(numNodes).fill(-1);
     d[0] = 0;
     p[0] = 0;
-    for (let i = 0; i < numNodes; ++i) {
-        let tempState = {};
-        let selectedEdges = [];
-        for (let j = 0; j < numEdges; ++j) {
-            const edgeId = graph[j].source.toString() + ":" + graph[j].target.toString();
-            if (d[graph[j].source] + graph[j].weight < d[graph[j].target] && d[graph[j].source] + graph[j].weight < 1e6) {
-                d[graph[j].target] = d[graph[j].source] + graph[j].weight;
-                p[graph[j].target] = graph[j].source;
-                selectedEdges.push(edgeId);
+    for (let i = 0; i < numNodes-1; i++) {
+        for (const edge of graph) {
+            const edgeId = edge.source.toString() + ":" + edge.target.toString();
+            if (iterEdgeList[i].includes(edgeId) && d[edge.source] + edge.weight < 1e6) {
+                d[edge.target] = d[edge.source] + edge.weight;
+                p[edge.target] = edge.source;
             }
         }
-        tempState["selectedEdges"] = selectedEdges;
-        tempState["distance"] = d.slice();
-        tempState["parent"] = p.slice();
-        states[i] = tempState;
     }
-}
-
-
-export function pastIteration(iteration) {
-    const key = iteration;
-    let distance = states[key]["distance"];
-    let parent = states[key]["parent"];
-    for (let i = 0; i < 7; i++) {
-        if (distance[i] < 1e6) {
-            document.getElementById("text" + i.toString()).innerHTML = distance[i].toString();
-            document.getElementById("parent" + i.toString()).innerHTML = parent[i].toString();
+    let tableBody = "";
+    for (let node = 0; node < numNodes; node++) {
+        if (d[node] < 1e6) {
+            tableBody += `<tr><th>${node}</th><th>${d[node]}</th><th>${p[node]}</th></tr>`
+        } else {
+            tableBody += `<tr><th>${node}</th><th>INF</th><th>-1</th></tr>`
         }
     }
-}
-
-function areEqual(array1, array2) {
-    if (array1.length === array2.length) {
-        return array1.every(element => {
-            if (array2.includes(element)) {
-                return true;
-            }
-            return false;
-        });
-    }
-    return false;
-}
-
-function changeColorGraph(edgeColor) {
-    cy.edges().style('line-color', edgeColor);
-}
-
-function colorPreviousEdges(selectedEdges) {
-    selectedEdges.forEach((edgeId) => {
-        cy.edges('[id=\'' + edgeId + '\']').style('line-color', "red");
-    });
+    document.getElementById("table-body").innerHTML = tableBody;
 }
 
 function submitIteration() {
     document.getElementById("table-body").innerHTML = "";
-    for (let iter = 0; iter < 6; iter++) {
+    for (let iter = 0; iter < numNodes-1; iter++) {
         if (!areEqual(iterEdgeList[iter], states[iter].selectedEdges)) {
             observ.innerHTML = "<span>&#10007;</span> Fail";
             observ.className = "failure-message";
+            createDistanceAndParentTable();
             return;
         }
     }
     observ.innerHTML = "<span>&#10003;</span> Success";
     observ.className = "success-message";
     let tableBody = "";
-    for (let node = 0; node < 7; node++) {
+    for (let node = 0; node < numNodes; node++) {
         if (states[5].distance[node] < 1e6) {
             tableBody += `<tr><th>${node}</th><th>${states[5].distance[node]}</th><th>${states[5].parent[node]}</th></tr>`
-        }else{
+        } else {
             tableBody += `<tr><th>${node}</th><th>INF</th><th>-1</th></tr>`
         }
     }
@@ -92,10 +58,10 @@ function submitIteration() {
 
 }
 
-function openIteration(evt, cityName) {
-    selectedIteration = parseInt(cityName[cityName.length - 1])
+function openIteration(evt, iterNumber) {
+    selectedIteration = parseInt(iterNumber[iterNumber.length - 1])
     // remove classname is-active from id iteration0 to iteration 5
-    for (let iter = 0; iter < 6; iter++) {
+    for (let iter = 0; iter < numNodes-1; iter++) {
         document.getElementById("iteration" + iter.toString()).classList.remove("is-active")
     }
     evt.currentTarget.className += " is-active";
@@ -108,16 +74,11 @@ function openIteration(evt, cityName) {
 export function refreshWorkingArea() {
     selectedIteration = 0;
     document.getElementById("table-body").innerHTML = "";
-    observ.innerHTML = "";
     iterEdgeList = {};
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < numNodes-1; i++) {
         iterEdgeList[i] = [];
     }
-    removeEdges();
-    makeGraph();
-    addEdges(null);
-    fillStates();
-    document.getElementById("iteration0").click();
+    refreshComponents();
 }
 cy.on('tap', 'edge', function (evt) {
     let edge = evt.target;

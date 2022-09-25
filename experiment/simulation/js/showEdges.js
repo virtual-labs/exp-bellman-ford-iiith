@@ -1,5 +1,6 @@
 "use strict";
-let svgns = "http://www.w3.org/2000/svg";
+import { graph,clearGraph } from "./randomGraph.js";
+import { cy } from "./displayGraph.js";
 export function showEdge(edgeId) {
     let src = edgeId.split(":")[0];
     let dest = edgeId.split(":")[1];
@@ -13,4 +14,16 @@ export function showEdge(edgeId) {
 export function hideEdge(edgeId) {
     let element = document.getElementById("image"+edgeId);
     element.parentNode.removeChild(element);
+}
+
+export function removeEdges(){
+    for(const edge of graph){
+        let src = edge.source.toString();
+        let dest = edge.target.toString();
+        let edgeId = src + ":" +dest;
+        hideEdge(edgeId);
+    }
+    cy.remove(cy.edges());
+    // empty graph
+    clearGraph();
 }

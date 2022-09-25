@@ -7,6 +7,7 @@ export let states = {};
 export let graph = [];
 export let selectedEdge = [];
 export let numEdges;
+export let numNodes = 7;
 function resolveNegCycle(cycle) {
     let src = cycle[0];
     let dst = cycle[1];
@@ -18,29 +19,29 @@ function resolveNegCycle(cycle) {
     }
 }
 
-function NegCycleBellmanFord(numEdges, numNodes) {
+function NegCycleBellmanFord(numEdges) {
     let d = Array(numNodes).fill(1e7);
     let p = Array(numNodes).fill(-1);
-    let x;
+    let stopped;
     for (let i = 0; i < numNodes; ++i) {
-        x = -1;
-        for (let j = 0; j < numEdges; ++j) {
-            if (d[graph[j].source] + graph[j].weight < d[graph[j].target]) {
-                d[graph[j].target] = d[graph[j].source] + graph[j].weight;
-                p[graph[j].target] = graph[j].source;
-                x = graph[j].target;
+        stopped = -1;
+        for (const edge of graph) {
+            if (d[edge.source] + edge.weight < d[edge.target]) {
+                d[edge.target] = d[edge.source] + edge.weight;
+                p[edge.target] = edge.source;
+                stopped = edge.target;
             }
         }
     }
 
-    if (x !== -1) {
+    if (stopped !== -1) {
         for (let i = 0; i < numNodes; ++i)
-            x = p[x];
+            stopped = p[stopped];
 
         let cycle = [];
-        for (let v = x; ; v = p[v]) {
+        for (let v = stopped; ; v = p[v]) {
             cycle.push(v);
-            if (v == x && cycle.length > 1)
+            if (v == stopped && cycle.length > 1)
                 break;
         }
         cycle.reverse();
@@ -49,7 +50,6 @@ function NegCycleBellmanFord(numEdges, numNodes) {
 }
 
 export function makeGraph() {
-    let numNodes = 7;
     // fixing 5 edges for better testcase
     graph.push({ source: 0, target: 1, weight: getRandomArbitrary(0, 10) });
     graph.push({ source: 0, target: 2, weight: getRandomArbitrary(0, 10) });
@@ -81,33 +81,6 @@ export function makeGraph() {
     graph.reverse();
     NegCycleBellmanFord(numEdges, numNodes);
     console.log(graph);
-}
-
-export function printGraph() {
-
-    // create a 7*7 array and mark it as false
-    let visited = [];
-    for (let i = 0; i < 7; i++) {
-        visited[i] = [];
-        for (let j = 0; j < 7; j++) {
-            visited[i][j] = false;
-        }
-    }
-
-    let dataTable = "";
-
-    for (let edge in graph) {
-        let src = graph[edge].source;
-        let dest = graph[edge].target;
-        let weight = graph[edge].weight;
-        dataTable += "<tr><td>" + src + "</td><td>" + dest + "</td><td>" + weight + "</td></tr>";
-        visited[src][dest] = true;
-        visited[dest][src] = true;
-    }
-
-    const tableElem = document.getElementById("table-body");
-    tableElem.insertAdjacentHTML("beforeend", dataTable);
-
 }
 
 export function clearGraph() {

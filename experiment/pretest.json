@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Q1. Bellman ford is better as compared to dijkstra's algorithm because: ",
+      "question": "Q1. Bellman-Ford is better as compared to dijkstra's algorithm because: ",
       "answers": {
         "a": "It has a lower time complexity",
         "b": "It can handle negative edges",
@@ -16,7 +16,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Q2. The best and worst case time complexity of bellman ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
+      "question": "Q2. The best and worst case time complexity of Bellman-Ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
       "answers": {
         "a": "O(n) and O(n^2)",
         "b": "O(n^2) and O(n^3)",
@@ -24,13 +24,13 @@
         "d": "O(E) and O(n^3)"
       },
       "explanations": {
-        "d": "The best case time complexity of bellman ford is O(E) and the worst case time complexity is O(n^3). In the best case we would run the algorithm once for all the edges thus it will be O(E). In the worst case we will run the algorithm n times for all the edges and the maximum number of edges that can be present in a graph is n(n-1)/2. Thus the worst case time complexity is O(n^3)"
+        "d": "The best case time complexity of Bellman-Ford is O(E) and the worst case time complexity is O(n^3). In the best case we would run the algorithm once for all the edges thus it will be O(E). In the worst case we will run the algorithm n times for all the edges and the maximum number of edges that can be present in a graph is n(n-1)/2. Thus the worst case time complexity is O(n^3)"
       },
       "correctAnswer": "d",
       "difficulty": "intermediate"
     },
     {
-      "question": "Q3. Bellman ford is type of which algorithm?",
+      "question": "Q3. Bellman-Ford is type of which algorithm?",
       "answers": {
         "a": "Greedy algorithm",
         "b": "Dynamic programming algorithm",
@@ -38,7 +38,7 @@
         "d": "Divide and conquer algorithm"
       },
       "explanations": {
-        "b": "Bellman ford is a dynamic programming algorithm, because we are using the previous results to calculate the current result"
+        "b": "Bellman-Ford is a dynamic programming algorithm, because we are using the previous results to calculate the current result"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -60,7 +60,7 @@
       "difficulty": "advanced"
     },
     {
-      "question": "Q5. The space complexity of dijkstra's algorithm and bellman ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
+      "question": "Q5. The space complexity of dijkstra's algorithm and Bellman-Ford algorithm is: (n represents the number of vertices and E represents the number of edges)",
       "answers": {
         "a": "O(n) and O(E + n)",
         "b": "O(n) and O((E+n)logn)",
@@ -71,6 +71,20 @@
         "c": "The space complexity of dijkstra's algorithm is O(E + n) because we are using a priority queue to store the edges and an array to store the distances. The space complexity of bellman ford algorithm is O(n) because we are using an array to store the distances and the array"
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Q6. Bellman-Ford algorithm is used for determining",
+      "answers": {
+        "a": "Shortest path from all vertices to all other vertices",
+        "b": "Shortest path from a single source to all other vertices",
+        "c": "Shortest path from a single source to a single destination",
+        "d": "Shortest path from all vertices to a single destination"
+      },
+      "explanations": {
+        "b": "Bellman-Ford algorithm is used for determining the shortest path from a single source to all other vertices."
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
