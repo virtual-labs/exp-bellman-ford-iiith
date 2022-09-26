@@ -1,0 +1,1 @@
+In this module we are going to learn about a famous algorithm Bellman-Ford. This algorithm helps us to find the shortest path from a source vertex to all other vecrtices in a weighted graph. This algorithm is like an extension to Dijkstra's algorithm as it works for negative edges as well.

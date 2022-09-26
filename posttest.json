@@ -1,0 +1,73 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Q1. What will be the average time complexity of the Bellman-ford algorithm if the time taken to realx an edge is O(log V)?",
+      "answers": {
+        "a": "O(V log V)",
+        "b": "O(V log E)",
+        "c": "O(V log V + E log V)",
+        "d": "O(VE log V)"
+      },
+      "explanations": {
+        "d": "The time complexity of Bellman-Ford algorithm is O(VE). Now the time taken to relax an edge is O(log V). So, the time complexity of the above described Bellman-Ford algorithm will be O(VE log V)."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Q2. We can use Bellman-Ford algorithm to detect negative weight cycles in a graph.",
+      "answers": {
+        "a": "True",
+        "b": "False"
+      },
+      "explanations": {
+        "a": "Instead of running the algorithm for |V|-1 times, we can run it for |V| times. If the shortest distance of any vertex changes in the |V|th iteration, then it means that there is a negative weight cycle in the graph."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Q3. The shortest distance between node 0 and 3 is :<img src=\"./images/posttestq1.png \">",
+      "answers": {
+        "a": "7",
+        "b": "1",
+        "c": "-1",
+        "d": "0"
+      },
+      "explanations": {
+        "b": "The shortest diatnce between node 0 and 3 is 1 if we use the path 0->1->2->3"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Q4. The shortest distance between node 0 and 3 is :<img src=\"./images/posttestq2.png \">",
+      "answers": {
+        "a": "-1",
+        "b": "1",
+        "c": "-13",
+        "d": "No Solution"
+      },
+      "explanations": {
+        "d": "Since there is a negative cycle 0->1->2->0, hence the solution does not exist."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Q5. The cost of the longest shortest-path between Node 0 and some Node v in an undirected graph with all edge costs being 2 will never be more than(|E| is the total number of edges)",
+      "answers": {
+        "a": "2|E|",
+        "b": "2|V|",
+        "c": "2 |v| - 1",
+        "d": "2 (|v| - 1)"
+      },
+      "explanations": {
+        "d": "The maximum number of edges between node 0 and v will never exceed |v| - 1. Hence the cost of the longest shortest path will never exceed 2(|v| - 1)."
+      },
+      "correctAnswer": "d",
+      "difficulty": "advanced"
+    }
+  ]
+}
