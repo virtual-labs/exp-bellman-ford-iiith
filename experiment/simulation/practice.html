@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual labs</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="columns is-centered">
+		<div class="column">
+			<div class="v-instruction-container">
+				<div class="v-collapsible is-size-5" id="task-description">
+					Instructions
+				</div>
+				<div class="v-content instruction-list">
+					<ul style="list-style: disc;">
+						<li>Node 0 is chosen as source.</li>
+                        <li>Select the edges that are going to be updated in the given iteration. Click on <b>Next Iteration</b> button to validate the answer of the current iteration.</li>
+						<li>The user is supposed to move sequentially, they can move back to the previous iteration to check the previous submission</li>
+                        <li>Click on the <b>Reset</b> button to generate a new graph.</li>
+                        <li>Order of edges on left window show the order in which the edges are selected.</li>
+                        <li>Edges selected appear in red color.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+		<div class="column is-2-desktop is-12-tablet is-12-mobile">
+			<div class="v-datalist-container" style="height:100%">
+				<div class="v-datalist-title">Order Of Edges</div>
+				<div class="v-datalist-row toolbar-item-list" id="toolbar"></div>
+			</div>
+		</div>
+		<div class="column is-6-desktop is-12-tablet is-12-mobile center-content">
+			<div class='practice-main-container'>
+				<div class="practice-top-container">
+					<div class="column centered-div">
+						<div class="v-tabs tabs-size">
+							<ul>
+								<li id="iteration0" onclick="openIteration(event, 'iteration0')">
+									<a>
+										Iter 0
+									</a>
+								</li>
+								<li id="iteration1" onclick="openIteration(event, 'iteration1')">
+									<a>
+										Iter 1
+									</a>
+								</li>
+								<li id="iteration2" onclick="openIteration(event, 'iteration2')">
+									<a>
+										Iter 2
+									</a>
+								</li>
+								<li id="iteration3" onclick="openIteration(event, 'iteration3')">
+									<a>
+										Iter 3
+									</a>
+								</li>
+								<li id="iteration4" onclick="openIteration(event, 'iteration4')">
+									<a>
+										Iter 4
+									</a>
+								</li>
+								<li id="iteration5" onclick="openIteration(event, 'iteration5')">
+									<a>
+										Iter 5
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Left Sidebar Area -->
+				<div class='practice-array-container'>
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="120%"
+						viewBox="0 0 420 325 ">
+						<text x="-50" y="95" class="text-demo">Node</text>
+						<text x="-50" y="155" class="text-demo">Distance</text>
+						<text x="-50" y="215" class="text-demo">Parent</text>
+						<rect id="x0" x="60" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x1" x="120" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x2" x="180" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x3" x="240" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x4" x="300" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x5" x="360" y="60" width="60" height="60" class="array-demo" />
+						<rect id="x6" x="420" y="60" width="60" height="60" class="array-demo" />
+						<rect id="y0" x="60" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y1" x="120" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y2" x="180" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y3" x="240" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y4" x="300" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y5" x="360" y="120" width="60" height="60" class="array-demo" />
+						<rect id="y6" x="420" y="120" width="60" height="60" class="array-demo" />
+						<rect id="z0" x="60" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z1" x="120" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z2" x="180" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z3" x="240" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z4" x="300" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z5" x="360" y="180" width="60" height="60" class="array-demo" />
+						<rect id="z6" x="420" y="180" width="60" height="60" class="array-demo" />
+						<text x="85" y="95" class="array-text">0</text>
+						<text x="145" y="95" class="array-text">1</text>
+						<text x="205" y="95" class="array-text">2</text>
+						<text x="265" y="95" class="array-text">3</text>
+						<text x="325" y="95" class="array-text">4</text>
+						<text x="385" y="95" class="array-text">5</text>
+						<text x="445" y="95" class="array-text">6</text>
+						<text id="text0" x="85" y="155" class="array-text">0</text>
+						<text id="text1" x="135" y="155" class="array-text">INF</text>
+						<text id="text2" x="195" y="155" class="array-text">INF</text>
+						<text id="text3" x="255" y="155" class="array-text">INF</text>
+						<text id="text4" x="315" y="155" class="array-text">INF</text>
+						<text id="text5" x="375" y="155" class="array-text">INF</text>
+						<text id="text6" x="435" y="155" class="array-text">INF</text>
+						<text id="parent0" x="85" y="215" class="array-text">0</text>
+						<text id="parent1" x="135" y="215" class="array-text">-1</text>
+						<text id="parent2" x="195" y="215" class="array-text">-1</text>
+						<text id="parent3" x="255" y="215" class="array-text">-1</text>
+						<text id="parent4" x="315" y="215" class="array-text">-1</text>
+						<text id="parent5" x="375" y="215" class="array-text">-1</text>
+						<text id="parent6" x="435" y="215" class="array-text">-1</text>
+						<text x="500" y="215" class="array-text tooltip" onclick="showInfo()" >&#9432;</text>
+					</svg>
+					<span class="tooltiptext">Array Representing distance and parent of nodes</span>
+				</div>
+
+				<!-- Main Content Area -->
+				<div class='practice-main-content-container' id="diagram">
+				</div>
+				<div class="practice-bottom-container">
+					<div class="columns centered-div">
+						<button class="v-button button-margin" id="submit" onclick="submitIteration()">Next Iteration</button>
+						<button class="v-button button-margin" id="restart" onclick="refreshWorkingArea()">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column is-3-desktop is-12-tablet is-12-mobile center-content">
+			<div class="v-datalist-container toolbar-item-list">
+				<div class="v-datalist-title">
+					Observation
+				</div>
+				<div class="v-datalist-row">
+					<div id="observations" style="font-size: 20px; font-weight:bold;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="module" src="js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.22.1/cytoscape.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+</body>
+
+</html>

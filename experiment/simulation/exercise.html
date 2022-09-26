@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual labs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div class="columns is-centered">
+        <div class="column">
+            <div class="v-instruction-container">
+                <div class="v-collapsible is-size-5" id="task-description">
+                    Instructions
+                </div>
+                <div class="v-content instruction-list">
+                    <ul style="list-style: disc;">
+                        <li>Node 0 is chosen as source.</li>
+                        <li>Click on the tabs and select the edges that are going to be updated in that iteration. After going through all the iteration click on the <b>Submit</b> button to validate</li>
+                        <li>Click on the <b>Reset</b> button to generate a new graph.</li>
+                        <li>Order of edges on left window show the order in which the edges are selected.</li>
+                        <li>Edges selected appear in red color.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
+        <div class="column is-2-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container" style="height:100%">
+                <div class="v-datalist-title">Order Of Edges</div>
+                <div class="v-datalist-row toolbar-item-list" id="toolbar"></div>
+            </div>
+        </div>
+        <div class="column is-6-desktop is-12-tablet is-12-mobile center-content">
+            <div class='exercise-main-container'>
+                <div class="exercise-top-container">
+                    <div class="column centered-div">
+                        <div class="v-tabs tabs-size">
+                            <ul>
+                                <li id="iteration0" onclick="openIteration(event, 'iteration0')">
+                                    <a>
+                                        Iter 0
+                                    </a>
+                                </li>
+                                <li id="iteration1" onclick="openIteration(event, 'iteration1')">
+                                    <a>
+                                        Iter 1
+                                    </a>
+                                </li>
+                                <li id="iteration2" onclick="openIteration(event, 'iteration2')">
+                                    <a>
+                                        Iter 2
+                                    </a>
+                                </li>
+                                <li id="iteration3" onclick="openIteration(event, 'iteration3')">
+                                    <a>
+                                        Iter 3
+                                    </a>
+                                </li>
+                                <li id="iteration4" onclick="openIteration(event, 'iteration4')">
+                                    <a>
+                                        Iter 4
+                                    </a>
+                                </li>
+                                <li id="iteration5" onclick="openIteration(event, 'iteration5')">
+                                    <a>
+                                        Iter 5
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Content Area -->
+                <div class='exercise-middle-container' id="diagram">
+                </div>
+                <div class='exercise-bottom-container'>
+                    <div class="columns centered-div">
+                        <button class="v-button button-margin" id="submit" onclick="submitIteration()">Submit</button>
+                        <button class="v-button button-margin" id="restart" onclick="refreshWorkingArea()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-3-desktop is-12-tablet is-12-mobile center-content">
+            <div class="v-datalist-container toolbar-item-list">
+                <div class="v-datalist-title">
+                    Observation
+                </div>
+                <div class="v-datalist-row">
+                    <div id="observations"></div>
+                    <div class="v-table-wrap">
+                        <table class="table is-bordered is-fullwidth">
+                            <thead id="table-head">
+                                <tr>
+                                    <th>Node</th>
+                                    <th>Distance</th>
+                                    <th>Parent</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/exercise.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.22.1/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+</body>
+
+</html>
