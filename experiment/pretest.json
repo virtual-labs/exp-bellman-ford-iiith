@@ -30,15 +30,15 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Q3. Bellman-Ford is type of which algorithm?",
+      "question": "Q3. Select the most appropriate statement about Bellman-Ford algorithm: ",
       "answers": {
-        "a": "Greedy algorithm",
-        "b": "Dynamic programming algorithm",
-        "c": "Backtracking algorithm",
-        "d": "Divide and conquer algorithm"
+        "a": "Bellman-Ford is a greedy algorithm",
+        "b": "Bellman-Ford is a dynamic programming-based algorithm",
+        "c": "Bellman-Ford is a backtracking algorithm",
+        "d": "Bellman-Ford is a divide and conquer algorithm"
       },
       "explanations": {
-        "b": "Bellman-Ford is a dynamic programming algorithm, because we are using the previous results to calculate the current result"
+        "b": "Bellman-Ford is a dynamic programming-based algorithm. The algorithm reduces the overlapping subproblems by storing the results of the subproblems in a distance array. The distance array is then used to solve the main problem."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"

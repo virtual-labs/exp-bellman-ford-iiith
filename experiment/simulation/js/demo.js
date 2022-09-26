@@ -4,7 +4,7 @@ import { addEdges, cy } from "./displayGraph.js";
 import { removeEdges} from "./showEdges.js";
 import { showInfo } from "./helper.js";
 
-window.simulationStatus = simulationStatus;
+window.nextSimulation = nextSimulation;
 window.previousSimulation = previousSimulation;
 window.restartSimulation = restartSimulation;
 window.showInfo = showInfo;
@@ -31,7 +31,7 @@ export function fillStates() {;
             const key = i.toString() + "-" + edgeId;
             let tempState = {};
             let selectedEdges = [];
-            if (d[edge.source] + edge.weight < d[edge.target] && d[edge.source] + edge.weight < 1e6) {
+            if ((d[edge.source] + edge.weight < d[edge.target]) && (d[edge.source] + edge.weight < 1e6)) {
                 d[edge.target] = d[edge.source] + edge.weight;
                 p[edge.target] = edge.source;
                 tempState["change"] = true;
@@ -114,7 +114,7 @@ export function restartSimulation() {
     for (let i = 0; i < numNodes; i++) {
         document.getElementById("text" + i.toString()).style.fill = "black";
         document.getElementById("parent" + i.toString()).style.fill = "black";
-        if (i == 0) {
+        if (i === 0) {
             document.getElementById("text" + i.toString()).textContent = "0";
             document.getElementById("parent" + i.toString()).textContent = "0";
         } else {
@@ -125,16 +125,19 @@ export function restartSimulation() {
     refreshWorkingArea();
 }
 
-export function simulationStatus() {
+export function nextSimulation() {
+
+    // to check if the last simulation was next or previous
     if(!decide) {
         edge++;
     }
-    decide = true;        
-    if (edge == numEdges) {
+    decide = true;
+    // upadte the edge and iteration if the current edge exceed the number of edges        
+    if (edge === numEdges) {
         edge = 0;
         iter++;
     }
-    if (iter == (numNodes - 1)) {
+    if (iter === (numNodes - 1)) {
         observ.innerHTML = "Simulation finished";
     }
     else {
@@ -149,10 +152,11 @@ export function simulationStatus() {
 
 export function previousSimulation(){
 
+    // to check if the last simulation was next or previous
     if(decide){
-        if(edge == 0)
+        if(edge === 0)
         {
-            if(iter == 0)
+            if(iter === 0)
             {
                 observ.innerHTML = "Can't go back";
                 return;
@@ -165,9 +169,11 @@ export function previousSimulation(){
         }
     }
     decide = false;
-    if(edge == 0)
+
+    // Handling edge cases and moving one step back
+    if(edge === 0)
     {
-        if(iter == 0)
+        if(iter === 0)
         {
             observ.innerHTML = "Can't go back";
             return;
@@ -187,7 +193,7 @@ export function previousSimulation(){
 
 export function refreshWorkingArea() {
     makeGraph();
-    addEdges(null);
+    addEdges();
     fillStates();
 }
 refreshWorkingArea();

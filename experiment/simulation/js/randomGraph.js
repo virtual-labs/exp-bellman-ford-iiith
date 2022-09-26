@@ -41,7 +41,7 @@ function NegCycleBellmanFord(numEdges) {
         let cycle = [];
         for (let v = stopped; ; v = p[v]) {
             cycle.push(v);
-            if (v == stopped && cycle.length > 1)
+            if (v === stopped && cycle.length > 1)
                 break;
         }
         cycle.reverse();
@@ -63,7 +63,7 @@ export function makeGraph() {
         let target;
         source = Math.floor(Math.random() * (numNodes - 1)) + 1;
         target = Math.floor(Math.random() * numNodes);
-        if (source != target) {
+        if (source !== target) {
             let isPresent = false;
             for (let i = 0; i < graph.length; i++) {
                 if (graph[i].source === source && graph[i].target === target) {

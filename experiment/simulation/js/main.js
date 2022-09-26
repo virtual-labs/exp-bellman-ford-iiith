@@ -73,7 +73,7 @@ function openIteration(evt, iterNumber) {
 
 export function refreshWorkingArea() {
     for (let i = 0; i < numNodes; i++) {
-        if (i == 0) {
+        if (i === 0) {
             document.getElementById("text" + i.toString()).textContent = "0";
             document.getElementById("parent" + i.toString()).textContent = "0";
         } else {

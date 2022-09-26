@@ -18,7 +18,7 @@ export function refreshComponents(){
     observ.innerHTML = "";
     removeEdges();
     makeGraph();
-    addEdges(null);
+    addEdges();
     document.getElementById("iteration0").click();
     fillStates();
 }

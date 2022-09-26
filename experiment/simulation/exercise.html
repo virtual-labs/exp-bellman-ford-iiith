@@ -13,7 +13,7 @@
 <body>
     <div class="columns is-centered">
         <div class="column">
-            <div class="v-collapsible-instruction-container v-instruction-container">
+            <div class="v-instruction-container">
                 <div class="v-collapsible is-size-5" id="task-description">
                     Instructions
                 </div>
@@ -37,8 +37,8 @@
             </div>
         </div>
         <div class="column is-6-desktop is-12-tablet is-12-mobile center-content">
-            <div class='exerciseMainContainer'>
-                <div class="exerciseLeftSidebarContainer">
+            <div class='exercise-main-container'>
+                <div class="exercise-top-container">
                     <div class="column centered-div">
                         <div class="v-tabs tabs-size">
                             <ul>
@@ -77,9 +77,9 @@
                     </div>
                 </div>
                 <!-- Main Content Area -->
-                <div class='exerciseMainContentContainer' id="diagram">
+                <div class='exercise-middle-container' id="diagram">
                 </div>
-                <div class='exerciseBottomContainer'>
+                <div class='exercise-bottom-container'>
                     <div class="columns centered-div">
                         <button class="v-button button-margin" id="submit" onclick="submitIteration()">Submit</button>
                         <button class="v-button button-margin" id="restart" onclick="refreshWorkingArea()">Reset</button>

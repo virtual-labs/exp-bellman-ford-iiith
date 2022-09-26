@@ -7,7 +7,7 @@ export function showEdge(edgeId) {
     let writtenText = src + "-->" + dest;
     let newDiv = document.createElement("div");
     newDiv.id = "image"+edgeId;
-    newDiv.className = "toolbar-component";
+    newDiv.className = "edge-component";
     newDiv.innerHTML = writtenText;
     document.getElementById("toolbar").appendChild(newDiv);
 }
