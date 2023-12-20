@@ -47,3 +47,4 @@ export function addEdges() {
 }
 cy.layout({ name: 'circle' }).run();
 cy.zoomingEnabled(false);
+cy.panningEnabled(false);
